@@ -1,0 +1,24 @@
+<h1>Create a New Article</h1>
+<%# 
+FOrm With is a Form Builder %>
+
+<%# Form For follows simple RESTful conventions
+Form Tag is used for custom URLS %>
+
+<%= form_with model: @article do |form| %>
+    <div>
+        <%= form.label :title %> 
+        <br>
+        <%= form.text_field :title %>
+    </div>
+
+    <div>
+        <%= form.label :body %> 
+        <br>
+        <%= form.text_area :body %>
+    </div>
+
+    <div>
+        <%= form.submit %>
+    </div>
+<% end %>

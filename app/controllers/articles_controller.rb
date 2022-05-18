@@ -15,13 +15,21 @@ class ArticlesController < ApplicationController
     @article = Article.new
   end 
 
-  def create #Create
-    @article = Article.new(title: '...', body: '...')
+  def create #Create --> Use Strong Params
+    @article = Article.new(article_params)
 
     if @article.save 
       redirect_to @article 
     else 
       render :new, status: :unprocessable_entity
     end 
+  end 
+
+
+  #submitted data is put into params
+  #pass a single Hash that contains the values, if you pass malicious or unfiltered params, Rails will raise an error
+  private 
+  def article_params
+      params.require(:article).permit(:title, :body)
   end 
 end
