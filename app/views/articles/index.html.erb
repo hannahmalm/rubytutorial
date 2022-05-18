@@ -2,3 +2,17 @@
 <p>Find me in app/views/articles/index.html.erb</p> %>
 
 <h1>Hello World</h1>
+<h2>Here is a full list of Articles I have written</h2>
+
+<%# 
+Using @ instance variable lets you iterate over the entire list of articles
+Using erb with the = sign lets you actually print something out %>
+
+
+<ul>
+    <% @articles.each do |article| %>
+    <li>
+        <%= article.title %>
+    </li>
+    <% end %>
+</ul>
