@@ -6,4 +6,22 @@ class ArticlesController < ApplicationController
     #use the @to make it an INSTANCE variable and giving it access to all methods in the class
     @articles = Article.all 
   end
+
+  def show #Read
+    @article = Article.find(params[:id])
+  end 
+
+  def new #Create
+    @article = Article.new
+  end 
+
+  def create #Create
+    @article = Article.new(title: '...', body: '...')
+
+    if @article.save 
+      redirect_to @article 
+    else 
+      render :new, status: :unprocessable_entity
+    end 
+  end 
 end

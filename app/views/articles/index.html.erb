@@ -9,10 +9,14 @@ Using @ instance variable lets you iterate over the entire list of articles
 Using erb with the = sign lets you actually print something out %>
 
 
+<%# article_path is a HELPER and the (article) is the article id %>
+
 <ul>
     <% @articles.each do |article| %>
     <li>
-        <%= article.title %>
+    <%# <a href="<%= article_path(article)%>
+        <%= link_to article.title, article %>
+    </a>
     </li>
     <% end %>
 </ul>
