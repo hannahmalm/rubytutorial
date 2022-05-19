@@ -45,6 +45,14 @@ class ArticlesController < ApplicationController
   end 
 
 
+  def destroy 
+    @article = Article.find(params[:id])
+    @article.destroy 
+
+    redirect_to root_path, status: :see_other
+  end 
+
+
   #submitted data is put into params
   #pass a single Hash that contains the values, if you pass malicious or unfiltered params, Rails will raise an error
   private 
