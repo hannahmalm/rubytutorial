@@ -5,17 +5,25 @@ FOrm With is a Form Builder %>
 <%# Form For follows simple RESTful conventions
 Form Tag is used for custom URLS %>
 
+<%# Add in validations -- these are defined in the model  %>
+
 <%= form_with model: @article do |form| %>
     <div>
         <%= form.label :title %> 
         <br>
         <%= form.text_field :title %>
+            <% @article.errors.full_messages_for(:title).each do |message| %>
+            <%= message %>
+            <% end %>
     </div>
 
     <div>
         <%= form.label :body %> 
         <br>
         <%= form.text_area :body %>
+      <% @article.errors.full_messages_for(:body).each do |message| %>
+            <%= message %>
+            <% end %>
     </div>
 
     <div>

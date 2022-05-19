@@ -1,0 +1,28 @@
+<%# This form is a partial because it will be reused
+The form builder automatically configures the form to make the appropriate request
+Because partials are shared code, do not depend on specific instance varialbes set by controller action %>
+
+
+<%= form_with model: article do |form| %>
+    <div>
+        <%= form.label :title %> 
+        <br>
+        <%= form.text_field :title %>
+            <% article.errors.full_messages_for(:title).each do |message| %>
+            <%= message %>
+            <% end %>
+    </div>
+
+    <div>
+        <%= form.label :body %> 
+        <br>
+        <%= form.text_area :body %>
+      <% article.errors.full_messages_for(:body).each do |message| %>
+            <%= message %>
+            <% end %>
+    </div>
+
+    <div>
+        <%= form.submit %>
+    </div>
+<% end %>

@@ -25,6 +25,25 @@ class ArticlesController < ApplicationController
     end 
   end 
 
+  #edit is similar to new
+  #edit fetches article from database, and stores it in instance variable to be used when building edit form 
+  def edit 
+    @article = Article.find(params[:id])
+  end 
+
+  #update is similar to create
+  #used with edit form
+  #update refetches article from database and updates it with article_params
+  def update 
+    @article = Article.find(params[:id])
+
+    if @article.update(article_params)
+      redirect_to @article 
+    else 
+      render :edit, status: :unprocessable_entity
+    end 
+  end 
+
 
   #submitted data is put into params
   #pass a single Hash that contains the values, if you pass malicious or unfiltered params, Rails will raise an error
